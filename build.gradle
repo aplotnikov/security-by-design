@@ -1,0 +1,31 @@
+plugins {
+    id 'groovy'
+}
+
+group 'io.github.aplotnikov'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+        'com.google.guava:guava:28.2-jre',
+        'org.apache.commons:commons-lang3:3.9',
+        'org.slf4j:slf4j-api:1.7.30',
+        'ch.qos.logback:logback-core:1.2.3',
+        'ch.qos.logback:logback-classic:1.2.3'
+    )
+
+    testImplementation(
+        'org.codehaus.groovy:groovy:3.0.1',
+        'org.spockframework:spock-core:2.0-M2-groovy-3.0'
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
