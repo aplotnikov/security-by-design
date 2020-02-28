@@ -22,7 +22,8 @@ dependencies {
 
     testImplementation(
         'org.codehaus.groovy:groovy:3.0.1',
-        'org.spockframework:spock-core:2.0-M2-groovy-3.0'
+        'org.spockframework:spock-core:2.0-M2-groovy-3.0',
+        'nl.jqno.equalsverifier:equalsverifier:3.1.12'
     )
 }
 

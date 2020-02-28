@@ -1,5 +1,6 @@
 package io.github.aplotnikov.domain.v2
 
+import nl.jqno.equalsverifier.EqualsVerifier
 import spock.lang.Specification
 
 class ClientIdSpec extends Specification {
@@ -57,5 +58,12 @@ class ClientIdSpec extends Specification {
             ClientId id = ClientId.of(1)
         then:
             id.value == 1
+    }
+
+    void 'equals and hashcode contract should be followed'() {
+        expect:
+            EqualsVerifier.forClass(ClientId)
+                .usingGetClass()
+                .verify()
     }
 }
