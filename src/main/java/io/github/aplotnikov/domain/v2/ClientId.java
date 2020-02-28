@@ -17,7 +17,7 @@ final class ClientId {
     static ClientId of(String id) {
         checkNotNull(id, "Client id can not be null");
         checkState(id.length() <= 10, "Client id can not contain more than 10 symbols");
-        checkState(id.matches("[0-9]+"), "Client id can not contain anything except numbers");
+        checkState(id.matches("[0-9]+"), "Client id can not contain anything except digits");
         return of(parseLong(id));
     }
 

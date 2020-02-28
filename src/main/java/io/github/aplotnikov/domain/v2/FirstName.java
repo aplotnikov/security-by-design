@@ -5,7 +5,7 @@ import static com.google.common.base.Preconditions.checkState;
 
 import java.util.Objects;
 
-class FirstName {
+final class FirstName {
 
     private final String name;
 

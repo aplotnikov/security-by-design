@@ -7,7 +7,7 @@ import static org.apache.commons.lang3.Validate.validState;
 
 import java.util.Objects;
 
-class SecondName {
+final class SecondName {
 
     private final String name;
 

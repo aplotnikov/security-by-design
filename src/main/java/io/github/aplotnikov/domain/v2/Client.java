@@ -10,6 +10,6 @@ class Client {
 
     String password;
 
-    String personalId;
+    PersonalId personalId;
 
 }

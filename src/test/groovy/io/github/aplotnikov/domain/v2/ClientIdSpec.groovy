@@ -26,7 +26,7 @@ class ClientIdSpec extends Specification {
             ClientId.of(value)
         then:
             IllegalStateException exception = thrown()
-            exception.message == 'Client id can not contain anything except numbers'
+            exception.message == 'Client id can not contain anything except digits'
         where:
             value << [
                 '1'.repeat(8) + 'a',
