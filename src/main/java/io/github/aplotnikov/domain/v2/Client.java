@@ -4,7 +4,7 @@ class Client {
 
     ClientId id;
 
-    String firstName;
+    FirstName firstName;
 
     String secondName;
 
