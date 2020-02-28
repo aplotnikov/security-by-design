@@ -6,7 +6,7 @@ class Client {
 
     FirstName firstName;
 
-    String secondName;
+    SecondName secondName;
 
     String password;
 
