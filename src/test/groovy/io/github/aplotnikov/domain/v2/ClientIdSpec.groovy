@@ -33,7 +33,8 @@ class ClientIdSpec extends Specification {
                 'a' + '1'.repeat(8),
                 '1'.repeat(4) + 'a' + '1'.repeat(4),
                 '1'.repeat(8) + '!',
-                '0 or 1=1'
+                '0 or 1=1',
+                '-1'
             ]
     }
 
