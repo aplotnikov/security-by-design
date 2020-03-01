@@ -54,11 +54,19 @@ class LoanIdSpec extends Specification {
             exception.message == 'Loan id has to be less than 2 000 000 000'
     }
 
-    void 'should be possible to create loan id when '() {
+    void 'should be possible to create loan id'() {
         when:
             LoanId id = LoanId.of(1)
         then:
-            id.value == 1
+            with(id) {
+                value == 1
+                !forReplace
+            }
+    }
+
+    void 'should loan id to replace has status for replace'() {
+        expect:
+            LoanId.TO_REPLACE.forReplace
     }
 
     void 'equals and hashcode contract should be followed'() {

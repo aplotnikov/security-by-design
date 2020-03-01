@@ -8,6 +8,10 @@ import java.util.Objects;
 
 final class ClientId {
 
+    private static final long FAKE_VALUE = -1;
+
+    static final ClientId TO_REPLACE = new ClientId(FAKE_VALUE);
+
     private final long id;
 
     private ClientId(long id) {
@@ -29,6 +33,10 @@ final class ClientId {
 
     long getValue() {
         return id;
+    }
+
+    boolean isForReplace() {
+        return id == FAKE_VALUE;
     }
 
     @Override

@@ -1,7 +1,10 @@
 package io.github.aplotnikov.domain.v2;
 
 import static java.util.Objects.requireNonNull;
+import static org.apache.commons.lang3.Validate.notNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 final class Client {
@@ -15,6 +18,8 @@ final class Client {
     private final Password password;
 
     private final PersonalId personalId;
+
+    private final List<Loan> loans = new ArrayList<>();
 
     Client(ClientId id, FirstName firstName, SecondName secondName, Password password, PersonalId personalId) {
         this.id = requireNonNull(id, "Client id can not be null");
@@ -42,6 +47,17 @@ final class Client {
 
     PersonalId getPersonalId() {
         return personalId;
+    }
+
+    void takeLoan(Money amount, Term term) {
+        notNull(amount, "Amount can not be null");
+        notNull(term, "Term can not be null");
+
+        loans.add(new Loan(amount, term, id));
+    }
+
+    List<Loan> getLoans() {
+        return List.copyOf(loans);
     }
 
     @Override

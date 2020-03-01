@@ -10,6 +10,10 @@ final class Loan {
 
     private final ClientId clientId;
 
+    Loan(Money amount, Term term, ClientId clientId) {
+        this(LoanId.TO_REPLACE, amount, term, clientId);
+    }
+
     Loan(LoanId id, Money amount, Term term, ClientId clientId) {
         this.id = id;
         this.amount = amount;

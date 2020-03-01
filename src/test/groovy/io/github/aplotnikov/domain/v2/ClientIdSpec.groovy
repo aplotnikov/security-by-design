@@ -58,7 +58,15 @@ class ClientIdSpec extends Specification {
         when:
             ClientId id = ClientId.of(1)
         then:
-            id.value == 1
+            with(id) {
+                value == 1
+                !forReplace
+            }
+    }
+
+    void 'should loan id to replace has status for replace'() {
+        expect:
+            ClientId.TO_REPLACE.forReplace
     }
 
     void 'equals and hashcode contract should be followed'() {

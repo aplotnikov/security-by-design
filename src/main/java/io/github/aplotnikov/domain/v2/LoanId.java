@@ -8,6 +8,10 @@ import java.util.Objects;
 
 class LoanId {
 
+    private static final long FAKE_VALUE = -1;
+
+    static final LoanId TO_REPLACE = new LoanId(FAKE_VALUE);
+
     private final long id;
 
     private LoanId(long id) {
@@ -29,6 +33,10 @@ class LoanId {
 
     long getValue() {
         return id;
+    }
+
+    boolean isForReplace() {
+        return id == FAKE_VALUE;
     }
 
     @Override
