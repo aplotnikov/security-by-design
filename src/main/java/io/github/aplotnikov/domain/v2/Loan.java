@@ -6,11 +6,11 @@ final class Loan {
 
     private final Money amount;
 
-    private final int term;
+    private final Term term;
 
     private final ClientId clientId;
 
-    Loan(LoanId id, Money amount, int term, ClientId clientId) {
+    Loan(LoanId id, Money amount, Term term, ClientId clientId) {
         this.id = id;
         this.amount = amount;
         this.term = term;
@@ -25,7 +25,7 @@ final class Loan {
         return amount;
     }
 
-    int getTerm() {
+    Term getTerm() {
         return term;
     }
 
