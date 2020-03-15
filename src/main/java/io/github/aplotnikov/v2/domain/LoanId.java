@@ -6,7 +6,7 @@ import static java.lang.Long.parseLong;
 
 import java.util.Objects;
 
-public class LoanId {
+public final class LoanId {
 
     private static final long FAKE_VALUE = -1;
 

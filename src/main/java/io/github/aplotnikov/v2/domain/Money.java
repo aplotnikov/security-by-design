@@ -6,7 +6,7 @@ import static org.apache.commons.lang3.Validate.validState;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Money {
+public final class Money {
 
     public enum Currency {
         EUR,
