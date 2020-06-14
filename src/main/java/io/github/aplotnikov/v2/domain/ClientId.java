@@ -4,7 +4,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 import static java.lang.Long.parseLong;
 
-import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public final class ClientId {
 
@@ -50,12 +51,17 @@ public final class ClientId {
         }
 
         ClientId clientId = (ClientId) other;
-        return id == clientId.id;
+
+        return new EqualsBuilder()
+            .append(id, clientId.id)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return new HashCodeBuilder()
+            .append(id)
+            .toHashCode();
     }
 
     @Override

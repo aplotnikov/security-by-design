@@ -1,6 +1,7 @@
 package io.github.aplotnikov.v2.infrastructure;
 
 import static io.github.aplotnikov.v2.domain.Money.Currency.PLN;
+import static java.lang.String.format;
 import static java.lang.invoke.MethodHandles.lookup;
 import static java.util.UUID.randomUUID;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -37,7 +38,7 @@ import io.github.aplotnikov.v2.domain.exceptions.ValidationException;
     consumes = APPLICATION_JSON_VALUE,
     produces = APPLICATION_JSON_VALUE
 )
-class LoanController {
+public class LoanController {
 
     private static final Logger LOG = LoggerFactory.getLogger(lookup().lookupClass());
 
@@ -48,7 +49,7 @@ class LoanController {
     }
 
     @PostMapping
-    ResponseEntity<String> applyForLoan(@Valid @RequestBody LoanDto loan) {
+    public ResponseEntity<String> applyForLoan(@Valid @RequestBody LoanDto loan) {
         try {
             LoanId id = service.process(toDomain(loan));
             return created(
@@ -59,8 +60,10 @@ class LoanController {
             return badRequest().body(exception.getMessage());
         } catch (Exception exception) {
             String uuid = randomUUID().toString();
-            LOG.error("Exception with UUID: {}", uuid);
-            LOG.error("Application threw following exception: ", exception);
+            LOG.error(
+                format("Application threw following exception with UUID %s: ", uuid),
+                exception
+            );
 
             return status(INTERNAL_SERVER_ERROR)
                 .body("Internal application error happened. Contact your support team. Error uuid is " + uuid);
@@ -68,7 +71,7 @@ class LoanController {
     }
 
     @GetMapping("{id}")
-    LoanDto findBy(@PathVariable long id) {
+    public LoanDto findBy(@PathVariable long id) {
         Loan loan = service.findBy(LoanId.of(id));
         return new LoanDto(
             loan.getClientId().getValue(),

@@ -5,7 +5,9 @@ import static org.apache.commons.lang3.Validate.notNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 final class Client {
 
@@ -71,13 +73,17 @@ final class Client {
         }
 
         Client client = (Client) other;
-        return Objects.equals(id, client.id) &&
-            Objects.equals(personalId, client.personalId);
+
+        return new EqualsBuilder()
+            .append(personalId, client.personalId)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, personalId);
+        return new HashCodeBuilder()
+            .append(personalId)
+            .toHashCode();
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.github.aplotnikov.v1.domain.LoanService;
 
 @RestController
-class LoanController {
+public class LoanController {
 
     private final LoanService service;
 
@@ -16,7 +16,7 @@ class LoanController {
     }
 
     @PostMapping("loans")
-    void applyForLoan(@RequestBody LoanDto loan) {
+    public void applyForLoan(@RequestBody LoanDto loan) {
         service.processLoan(loan.getClientId(), loan.getAmount(), loan.getTerm());
     }
 

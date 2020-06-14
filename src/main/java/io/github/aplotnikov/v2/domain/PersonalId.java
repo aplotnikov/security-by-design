@@ -1,6 +1,7 @@
 package io.github.aplotnikov.v2.domain;
 
-import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import io.vavr.control.Validation;
 
@@ -40,12 +41,17 @@ final class PersonalId {
         }
 
         PersonalId that = (PersonalId) other;
-        return Objects.equals(id, that.id);
+
+        return new EqualsBuilder()
+            .append(id, that.id)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return new HashCodeBuilder()
+            .append(id)
+            .toHashCode();
     }
 
     @Override

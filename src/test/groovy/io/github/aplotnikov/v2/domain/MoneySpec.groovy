@@ -18,7 +18,7 @@ class MoneySpec extends Specification {
 
     void 'should be impossible to create a money when currency is null'() {
         when:
-            Money.of(0.01, null)
+            Money.of(0.00, null)
         then:
             NullPointerException exception = thrown()
             exception.message == 'Currency can not be null'
@@ -29,11 +29,11 @@ class MoneySpec extends Specification {
             Money.of(value, EUR)
         then:
             IllegalStateException exception = thrown()
-            exception.message == 'Amount can not be less than 1 cent'
+            exception.message == 'Amount can not be less than 0.00'
         where:
             value << [
                 -1.0,
-                0.0
+                -0.01
             ]
     }
 
@@ -115,6 +115,7 @@ class MoneySpec extends Specification {
             }
         where:
             value  || expectedAmount
+            0      || 0.00
             1      || 1.00
             1.0    || 1.00
             1.00   || 1.00

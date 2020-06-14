@@ -3,7 +3,8 @@ package io.github.aplotnikov.v2.domain;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
-import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 final class FirstName {
 
@@ -37,12 +38,17 @@ final class FirstName {
         }
 
         FirstName firstName = (FirstName) other;
-        return Objects.equals(name, firstName.name);
+
+        return new EqualsBuilder()
+            .append(name, firstName.name)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return new HashCodeBuilder()
+            .append(name)
+            .toHashCode();
     }
 
     @Override

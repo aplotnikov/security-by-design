@@ -2,7 +2,8 @@ package io.github.aplotnikov.v2.domain;
 
 import static org.apache.commons.lang3.Validate.validState;
 
-import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public final class Term {
 
@@ -34,12 +35,17 @@ public final class Term {
         }
 
         Term term = (Term) other;
-        return value == term.value;
+
+        return new EqualsBuilder()
+            .append(value, term.value)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return new HashCodeBuilder()
+            .append(value)
+            .toHashCode();
     }
 
     @Override

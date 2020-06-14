@@ -1,10 +1,13 @@
 package io.github.aplotnikov.v2.domain;
 
+import static java.math.BigDecimal.ZERO;
 import static org.apache.commons.lang3.Validate.notNull;
 import static org.apache.commons.lang3.Validate.validState;
 
 import java.math.BigDecimal;
-import java.util.Objects;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public final class Money {
 
@@ -12,8 +15,6 @@ public final class Money {
         EUR,
         PLN
     }
-
-    private static final BigDecimal ONE_CENT = new BigDecimal("0.01");
 
     private static final BigDecimal MAX_AMOUNT = BigDecimal.valueOf(50_000);
 
@@ -40,7 +41,7 @@ public final class Money {
         notNull(currency, "Currency can not be null");
         validState(amount.precision() <= 7, "Amount can not be longer than 8 symbols");
         validState(amount.scale() <= 2, "Amount scale can not be more than 2");
-        validState(amount.compareTo(ONE_CENT) >= 0, "Amount can not be less than 1 cent");
+        validState(amount.compareTo(ZERO) >= 0, "Amount can not be less than 0.00");
         validState(amount.compareTo(MAX_AMOUNT) <= 0, "Amount can not be more than 50 000");
 
         return new Money(amount, currency);
@@ -76,13 +77,19 @@ public final class Money {
         }
 
         Money money = (Money) other;
-        return Objects.equals(amount, money.amount) &&
-            currency == money.currency;
+
+        return new EqualsBuilder()
+            .append(amount, money.amount)
+            .append(currency, money.currency)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, currency);
+        return new HashCodeBuilder()
+            .append(amount)
+            .append(currency)
+            .toHashCode();
     }
 
     @Override

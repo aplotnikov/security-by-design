@@ -78,7 +78,7 @@ class ClientSpec extends Specification {
     void 'equals and hashcode contract should be followed'() {
         expect:
             EqualsVerifier.forClass(Client)
-                .withOnlyTheseFields('id', 'personalId')
+                .withOnlyTheseFields('personalId')
                 .usingGetClass()
                 .verify()
     }

@@ -5,7 +5,8 @@ import static org.apache.commons.lang3.Validate.notBlank;
 import static org.apache.commons.lang3.Validate.notNull;
 import static org.apache.commons.lang3.Validate.validState;
 
-import java.util.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 final class SecondName {
 
@@ -39,12 +40,17 @@ final class SecondName {
         }
 
         SecondName that = (SecondName) other;
-        return Objects.equals(name, that.name);
+
+        return new EqualsBuilder()
+            .append(name, that.name)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return new HashCodeBuilder()
+            .append(name)
+            .toHashCode();
     }
 
     @Override

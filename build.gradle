@@ -8,26 +8,27 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
     implementation(
-        'com.google.guava:guava:28.2-jre',
-        'org.apache.commons:commons-lang3:3.9',
-        'io.vavr:vavr:0.10.2',
+        'com.google.guava:guava:29.0-jre',
+        'org.apache.commons:commons-lang3:3.10',
+        'io.vavr:vavr:0.10.3',
         'org.slf4j:slf4j-api:1.7.30',
         'ch.qos.logback:logback-core:1.2.3',
         'ch.qos.logback:logback-classic:1.2.3',
-        'org.springframework.boot:spring-boot-starter-web:2.2.5.RELEASE',
-        'org.springframework.boot:spring-boot-starter-data-jpa:2.2.5.RELEASE',
-        'org.springframework.boot:spring-boot-starter-hateoas:2.2.5.RELEASE',
+        'org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE',
+        'org.springframework.boot:spring-boot-starter-data-jpa:2.3.1.RELEASE',
+        'org.springframework.boot:spring-boot-starter-hateoas:2.3.1.RELEASE',
+        'javax.validation:validation-api:2.0.1.Final'
     )
 
     testImplementation(
-        'org.codehaus.groovy:groovy:3.0.1',
-        'org.spockframework:spock-core:2.0-M2-groovy-3.0',
-        'nl.jqno.equalsverifier:equalsverifier:3.1.12',
+        'org.codehaus.groovy:groovy:3.0.4',
+        'org.spockframework:spock-core:2.0-M3-groovy-3.0',
+        'nl.jqno.equalsverifier:equalsverifier:3.4',
     )
 }
 

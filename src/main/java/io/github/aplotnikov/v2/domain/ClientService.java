@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-class ClientService {
+public class ClientService {
 
     private static final Logger LOG = LoggerFactory.getLogger(lookup().lookupClass());
 
@@ -18,7 +18,7 @@ class ClientService {
     }
 
     @Transactional
-    void register(Client client) {
+    public void register(Client client) {
         checkNotNull(client, "Client can not be null");
 
         LOG.info("Registering client with id: {}", client.getId());
